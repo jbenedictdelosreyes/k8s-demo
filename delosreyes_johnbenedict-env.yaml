@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-demo
+data:
+  # property-like keys; each key maps to a simple value
+  DB_URL: "https://demo:27017"
