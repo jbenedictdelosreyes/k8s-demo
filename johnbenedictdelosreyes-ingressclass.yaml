@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /jb
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 80
+
+controlplane $ cat johnbenedictdelosreyes-ingressclass.yaml 
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+  name: nginx-example
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+spec:
+  controller: k8s.io/ingress-nginx
